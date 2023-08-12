@@ -21,12 +21,16 @@ export default function Container() {
   // };
   // initialFetch();
   const socials = use(fetchSocials());
+  const skills = use(fetchSkills());
+  const projects = use(fetchProjects());
+  const experiences = use(fetchExperiences());
+  const pageInfo = use(fetchPageInfo());
 
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-accent-80">
       <Header socials={socials} />
 
-      {/* <section id="hero" className="snap-start">
+      <section id="hero" className="snap-start">
         <Hero pageInfo={pageInfo} />
       </section>
 
@@ -56,7 +60,7 @@ export default function Container() {
             <ArrowSmallUpIcon className="h-8 w-8 rounded-full text-gray-500 hover:text-accent-50 transition-all ease-in-out cursor-pointer" />
           </div>
         </footer>
-      </Link> */}
+      </Link>
     </div>
   );
 }

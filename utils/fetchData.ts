@@ -2,41 +2,39 @@ import { Experience, PageInfo, Project, Skill, Social } from '@/typings';
 import { groq } from 'next-sanity'
 import { sanityClient } from '@/sanity'
 
-const query = groq`
-  *[_type == 'social']
-`
 const cacheOptions = { next: { revalidate: 10 } };
 
 export const fetchExperiences = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getExperience`, cacheOptions);
-  const data = await res.json();
-  const experiences: Experience[] = data.experiences;
+  const experiences: Experience[] = await sanityClient.fetch(groq`
+  *[_type == 'experience'] {
+    ...,
+    technologies[]->
+  }
+`);
   return experiences;
 };
 
 export const fetchPageInfo = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getPageInfo`, cacheOptions);
-  const data = await res.json();
-  const pageInfo: PageInfo = data.pageInfo;
+  const pageInfo: PageInfo = await sanityClient.fetch(groq`*[_type == 'pageInfo'][0]`);
   return pageInfo;
 };
 
 export const fetchProjects = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getProjects`, cacheOptions);
-  const data = await res.json();
-  const projects: Project[] = data.projects;
+  const projects: Project[] = await sanityClient.fetch(groq`
+  *[_type == 'project'] {
+    ...,
+    technologies[]->
+  }
+`);
   return projects;
 };
 
 export const fetchSkills = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getSkills`, cacheOptions);
-  const data = await res.json();
-  const skills: Skill[] = data.skills;
+  const skills: Skill[] = await sanityClient.fetch(groq`*[_type == 'skill']`);
   return skills;
 };
 
 export const fetchSocials = async () => {
-  const socials: Social[] = await sanityClient.fetch(query);
-  console.log(socials)
+  const socials: Social[] = await sanityClient.fetch(groq`*[_type == 'social']`);
   return socials;
 };
