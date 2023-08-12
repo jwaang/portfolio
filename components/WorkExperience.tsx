@@ -12,25 +12,25 @@ type Props = {
 };
 
 function Experience({ experiences }: Props) {
-  const [idx, setIdx] = useState(0);
-  const ref = useRef<HTMLDivElement | null>(null);
-
-  const handlePreviousClick = () => {
-    if (idx === 0) {
-      return;
-    }
-    const element = ref.current?.children[idx - 1];
-    setIdx(idx - 1);
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
-  const handleNextClick = () => {
-    if (idx === experiences.length - 1) {
-      return;
-    }
-    const element = ref.current?.children[idx + 1];
-    setIdx(idx + 1);
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
+  // TODO: Scroll is buggy with styling
+  // const [idx, setIdx] = useState(0);
+  // const ref = useRef<HTMLDivElement | null>(null);
+  // const handlePreviousClick = () => {
+  //   if (idx === 0) {
+  //     return;
+  //   }
+  //   const element = ref.current?.children[idx - 1];
+  //   setIdx(idx - 1);
+  //   element?.scrollIntoView({ behavior: "smooth" });
+  // };
+  // const handleNextClick = () => {
+  //   if (idx === experiences.length - 1) {
+  //     return;
+  //   }
+  //   const element = ref.current?.children[idx + 1];
+  //   setIdx(idx + 1);
+  //   element?.scrollIntoView({ behavior: "smooth" });
+  // };
 
   return (
     <motion.div
@@ -42,20 +42,11 @@ function Experience({ experiences }: Props) {
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl invisible md:visible">&nbsp;Experience</h3>
 
       <div className="visible md:invisible absolute flex w-full justify-between px-1">
-        <ChevronLeftIcon
-          className="h-8 w-8 text-gray-500 hover:text-accent-50 transition-all ease-in-out cursor-pointer"
-          onClick={handlePreviousClick}
-        />
-        <ChevronRightIcon
-          className="h-8 w-8 text-gray-500 hover:text-accent-50 transition-all ease-in-out cursor-pointer"
-          onClick={handleNextClick}
-        />
+        <ChevronLeftIcon className="h-8 w-8 text-gray-500" />
+        <ChevronRightIcon className="h-8 w-8 text-gray-500" />
       </div>
 
-      <div
-        className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-accent-80"
-        ref={ref}
-      >
+      <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-accent-80">
         {experiences
           .sort((a, b) => {
             if (dayjs(a.dateStarted) < dayjs(b.dateStarted)) {

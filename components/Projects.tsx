@@ -5,6 +5,7 @@ import { Project } from "@/typings";
 import { urlFor } from "@/sanity";
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
 type Props = {
   projects: Project[];
@@ -19,6 +20,10 @@ function Projects({ projects }: Props) {
       className="h-screen relative flex overflow:hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0"
     >
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl invisible md:visible">&nbsp;Projects</h3>
+      <div className="visible md:invisible absolute flex w-full justify-between px-1">
+        <ChevronLeftIcon className="h-8 w-8 text-gray-500" />
+        <ChevronRightIcon className="h-8 w-8 text-gray-500" />
+      </div>
       <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-accent-80">
         {projects.map((project, index) => {
           const { image, title, summary, technologies, linkToBuild } = project;
