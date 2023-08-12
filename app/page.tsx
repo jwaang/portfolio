@@ -48,7 +48,7 @@ export default async function Home() {
       <Link href="#hero">
         <footer className="sticky bottom-5 w-full cursor-pointer">
           <div className="flex items-center justify-center">
-            <ArrowSmallUpIcon className="h-8 w-8 rounded-full text-gray-500 hover:text-accent-50 transition-all ease-in-out cursor-pointer" />
+            <ArrowSmallUpIcon className="h-5 w-5 md:h-8 md:w-8 rounded-full text-gray-500 hover:text-accent-50 transition-all ease-in-out cursor-pointer" />
           </div>
         </footer>
       </Link>
