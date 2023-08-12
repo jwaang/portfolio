@@ -3,25 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --base: 37, 150, 190;
+  --accent: rgb(var(--base), .8);
+  --accent-80: rgb(var(--base), .8);
+  --accent-50: rgba(var(--base), .5);
+  --accent-10: rgb(var(--base), .1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.accent {
+  color: var(--accent);
+}
+
+.accent-50 {
+  color: var(--accent-50);
+}
+
+@layer components {
+  .heroButton {
+    @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-accent-50 hover:text-accent-50
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .contactInput {
+    @apply outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-accent-50 focus:text-accent-50
+  }
+  .contactIcons {
+    @apply text-accent h-5 w-5 md:h-7 md:w-7 animate-pulse
+  }
 }
