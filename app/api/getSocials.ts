@@ -17,7 +17,6 @@ export default async function handler(
 ) {
   try {
     const socials: Social[] = await sanityClient.fetch(query);
-    console.log({ socials, query })
     res.status(200).json({ socials })
   } catch (error) {
     console.error('Error fetching projects:', error);

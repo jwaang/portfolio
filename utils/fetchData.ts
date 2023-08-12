@@ -1,5 +1,10 @@
 import { Experience, PageInfo, Project, Skill, Social } from '@/typings';
+import { groq } from 'next-sanity'
+import { sanityClient } from '@/sanity'
 
+const query = groq`
+  *[_type == 'social']
+`
 const cacheOptions = { next: { revalidate: 10 } };
 
 export const fetchExperiences = async () => {
@@ -31,13 +36,7 @@ export const fetchSkills = async () => {
 };
 
 export const fetchSocials = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getSocials`, cacheOptions);
-  console.log(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getSocials`);
-  console.log(res);
-  if (!res.ok) {
-    throw new Error(`Server responded with status: ${res.status}`);
-  }
-  const data = await res.json();
-  const socials: Social[] = data.socials;
+  const socials: Social[] = await sanityClient.fetch(query);
+  console.log(socials)
   return socials;
 };
