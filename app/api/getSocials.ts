@@ -21,6 +21,5 @@ export default async function handler(
     res.status(200).json({ socials })
   } catch (error) {
     console.error('Error fetching projects:', error);
-    res.status(500).json({ error: 'An error occurred fetching projects' });
   }
 }
