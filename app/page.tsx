@@ -1,10 +1,10 @@
-import Header from "@/app/components/Header";
-import Hero from "@/app/components/Hero";
-import About from "@/app/components/About";
-import WorkExperience from "@/app/components/WorkExperience";
-import Skills from "@/app/components/Skills";
-import Projects from "@/app/components/Projects";
-import ContactMe from "@/app/components/ContactMe";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import WorkExperience from "@/components/WorkExperience";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import ContactMe from "@/components/ContactMe";
 import Link from "next/link";
 import { Experience, PageInfo, Project, Skill, Social } from "@/typings";
 import { fetchPageInfo, fetchExperiences, fetchProjects, fetchSkills, fetchSocials } from "@/utils/fetchData";
