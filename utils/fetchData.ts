@@ -32,6 +32,10 @@ export const fetchSkills = async () => {
 
 export const fetchSocials = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getSocials`, cacheOptions);
+  console.log(res);
+  if (!res.ok) {
+    throw new Error(`Server responded with status: ${res.status}`);
+  }
   const data = await res.json();
   const socials: Social[] = data.socials;
   return socials;
