@@ -5,26 +5,35 @@ import { sanityClient } from '@/sanity'
 const cacheOptions = { next: { revalidate: 10 } };
 
 export const fetchExperiences = async () => {
-  const experiences: Experience[] = await sanityClient.fetch(groq`*[_type == 'experience'] { ..., technologies[]-> }`);
+  const res = await fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2023-08-06/data/query/production?query=*%5B_type+%3D%3D+%27experience%27%5D+%7B+...%2C+technologies%5B%5D-%3E+%7D`, cacheOptions);
+  const data = await res.json();
+  const experiences: Experience[] = data.result;
   return experiences;
 };
 
 export const fetchPageInfo = async () => {
-  const pageInfo: PageInfo = await sanityClient.fetch(groq`*[_type == 'pageInfo'][0]`);
+  const res = await fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2023-08-06/data/query/production?query=*%5B_type+%3D%3D+%27pageInfo%27%5D%5B0%5D`, cacheOptions);
+  const data = await res.json();
+  const pageInfo: PageInfo = data.result;
   return pageInfo;
 };
 
 export const fetchProjects = async () => {
-  const projects: Project[] = await sanityClient.fetch(groq`*[_type == 'project'] { ..., technologies[]-> }`);
-  return projects;
-};
+  const res = await fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2023-08-06/data/query/production?query=*%5B_type+%3D%3D+%27project%27%5D+%7B+...%2C+technologies%5B%5D-%3E+%7D`, cacheOptions);
+  const data = await res.json();
+  const projects: Project[] = data.result;
+  return projects;};
 
 export const fetchSkills = async () => {
-  const skills: Skill[] = await sanityClient.fetch(groq`*[_type == 'skill']`);
+  const res = await fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2023-08-06/data/query/production?query=*%5B_type+%3D%3D+%27skill%27%5D`, cacheOptions);
+  const data = await res.json();
+  const skills: Skill[] = data.result;
   return skills;
 };
 
 export const fetchSocials = async () => {
-  const socials: Social[] = await sanityClient.fetch(groq`*[_type == 'social']`);
+  const res = await fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2023-08-06/data/query/production?query=*%5B_type+%3D%3D+%27social%27%5D`, cacheOptions);
+  const data = await res.json();
+  const socials: Social[] = data.result;
   return socials;
 };

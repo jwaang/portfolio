@@ -10,7 +10,7 @@ function ExperienceCard({ experience }: Props) {
   const { company, companyImage, dateStarted, dateEnded, jobTitle, technologies, isCurrentlyWorkingHere, points } = experience;
 
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] h-[550px] md:h-[650px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden">
+    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] h-[550px] md:h-[650px] xl:w-[900px] snap-center bg-[#292929] p-10 opacity-100 cursor-pointer overflow-hidden">
       <motion.img
         initial={{
           y: -100,

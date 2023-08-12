@@ -9,14 +9,13 @@ import Link from "next/link";
 import { Experience, PageInfo, Project, Skill, Social } from "@/typings";
 import { fetchPageInfo, fetchExperiences, fetchProjects, fetchSkills, fetchSocials } from "@/utils/fetchData";
 import { ArrowSmallUpIcon } from "@heroicons/react/24/solid";
-import { use } from "react";
 
-export default function Container() {
-  const socials: Social[] = use(fetchSocials());
-  const skills: Skill[] = use(fetchSkills());
-  const projects: Project[] = use(fetchProjects());
-  const experiences: Experience[] = use(fetchExperiences());
-  const pageInfo: PageInfo = use(fetchPageInfo());
+export default async function Home() {
+  const socials: Social[] = await fetchSocials();
+  const skills: Skill[] = await fetchSkills();
+  const projects: Project[] = await fetchProjects();
+  const experiences: Experience[] = await fetchExperiences();
+  const pageInfo: PageInfo = await fetchPageInfo();
 
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-accent-80">
