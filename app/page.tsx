@@ -9,19 +9,26 @@ import Link from "next/link";
 import { Experience, PageInfo, Project, Skill, Social } from "@/typings";
 import { fetchPageInfo, fetchExperiences, fetchProjects, fetchSkills, fetchSocials } from "@/utils/fetchData";
 import { ArrowSmallUpIcon } from "@heroicons/react/24/solid";
+import { use } from "react";
 
-export default async function Home() {
-  // const experiences: Experience[] = await fetchExperiences();
-  // const pageInfo: PageInfo = await fetchPageInfo();
-  // const projects: Project[] = await fetchProjects();
-  // const skills: Skill[] = await fetchSkills();
-  // const socials: Social[] = await fetchSocials();
+export default function Home() {
+  // const initialFetch = async () => {
+  //   const experiences: Experience[] = await fetchExperiences();
+  //   const pageInfo: PageInfo = await fetchPageInfo();
+  //   const projects: Project[] = await fetchProjects();
+  //   const skills: Skill[] = await fetchSkills();
+  //   const socials: Social[] = await fetchSocials();
+  // };
+  // initialFetch();
+
+  const socials = use(fetchSocials());
+  console.log(socials);
 
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-accent-80">
-      {/* <Header socials={socials || []} />
+      <Header socials={socials} />
 
-      <section id="hero" className="snap-start">
+      {/* <section id="hero" className="snap-start">
         <Hero pageInfo={pageInfo} />
       </section>
 
