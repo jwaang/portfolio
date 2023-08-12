@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ExperienceCard from "@/app/components/ExperienceCard";
+import ExperienceCard from "@/components/ExperienceCard";
 import { Experience } from "@/typings";
 import dayjs from "dayjs";
 

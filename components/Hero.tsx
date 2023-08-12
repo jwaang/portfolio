@@ -1,7 +1,7 @@
 "use client";
 
 import { Cursor, useTypewriter } from "react-simple-typewriter";
-import BackgroundCircles from "@/app/components/BackgroundCircles";
+import BackgroundCircles from "@/components/BackgroundCircles";
 import Link from "next/link";
 import { PageInfo } from "@/typings";
 import { urlFor } from "@/sanity";
