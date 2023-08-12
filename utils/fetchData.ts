@@ -5,12 +5,7 @@ import { sanityClient } from '@/sanity'
 const cacheOptions = { next: { revalidate: 10 } };
 
 export const fetchExperiences = async () => {
-  const experiences: Experience[] = await sanityClient.fetch(groq`
-  *[_type == 'experience'] {
-    ...,
-    technologies[]->
-  }
-`);
+  const experiences: Experience[] = await sanityClient.fetch(groq`*[_type == 'experience'] { ..., technologies[]-> }`);
   return experiences;
 };
 
@@ -20,12 +15,7 @@ export const fetchPageInfo = async () => {
 };
 
 export const fetchProjects = async () => {
-  const projects: Project[] = await sanityClient.fetch(groq`
-  *[_type == 'project'] {
-    ...,
-    technologies[]->
-  }
-`);
+  const projects: Project[] = await sanityClient.fetch(groq`*[_type == 'project'] { ..., technologies[]-> }`);
   return projects;
 };
 
