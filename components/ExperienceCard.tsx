@@ -4,13 +4,16 @@ import { urlFor } from "@/sanity";
 import Image from "next/image";
 import dayjs from "dayjs";
 
-type Props = { experience: Experience };
+type Props = { experience: Experience; id: string };
 
-function ExperienceCard({ experience }: Props) {
+function ExperienceCard({ experience, id }: Props) {
   const { company, companyImage, dateStarted, dateEnded, jobTitle, technologies, isCurrentlyWorkingHere, points } = experience;
 
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] h-[550px] md:h-[650px] xl:w-[900px] snap-center bg-[#292929] p-10 opacity-100 cursor-pointer overflow-hidden">
+    <article
+      className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[300px] md:w-9/12 snap-center bg-[#292929] p-10 opacity-100 cursor-pointer overflow-hidden"
+      id={id}
+    >
       <motion.img
         initial={{
           y: -100,
@@ -24,7 +27,7 @@ function ExperienceCard({ experience }: Props) {
         alt=""
       />
 
-      <div className="px-20 md:px-10">
+      <div className="md:px-10">
         <h4 className="text-2xl md:text-4xl font-light">{company}</h4>
         <p className="text-lg font-bold md:text-2xl mt-1">{jobTitle}</p>
         <div className="flex space-x-2 my-2">
@@ -37,11 +40,11 @@ function ExperienceCard({ experience }: Props) {
         <p className="text-sm md:text-base uppercase py-3 md:py-5 text-gray-300">
           {dayjs(dateStarted).format("MMM YYYY")} - {isCurrentlyWorkingHere ? "Present" : dayjs(dateEnded).format("MMM YYYY")}
         </p>
-        <ul className="m-0 list-disc space-y-4 text-sm md:text-lg max-h-40 overflow-y-scroll scrollbar-thin scrollbar-track-black scrollbar-thumb-accent-80">
+        {/* <ul className="m-0 list-disc space-y-4 text-sm md:text-lg max-h-40 overflow-y-scroll scrollbar-thin scrollbar-track-black scrollbar-thumb-accent-80">
           {points.map((point, idx) => (
             <li key={idx}>{point}</li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </article>
   );

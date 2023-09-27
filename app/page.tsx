@@ -33,9 +33,9 @@ export default async function Home() {
         <WorkExperience experiences={experiences} />
       </section>
 
-      <section id="skills" className="snap-start">
+      {/* <section id="skills" className="snap-start">
         <Skills skills={skills} />
-      </section>
+      </section> */}
 
       <section id="projects" className="snap-start">
         <Projects projects={projects} />

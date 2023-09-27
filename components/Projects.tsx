@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Project } from "@/typings";
 import { urlFor } from "@/sanity";
@@ -12,6 +13,24 @@ type Props = {
 };
 
 function Projects({ projects }: Props) {
+  const [idx, setIdx] = useState(0);
+
+  const scroll = (idx: number) => {
+    const element = document.getElementById(`project_${idx}`);
+    console.log(element);
+    setIdx(idx);
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handlePreviousClick = () => {
+    console.log(1);
+    scroll(idx === 0 ? projects.length - 1 : idx - 1);
+  };
+  const handleNextClick = () => {
+    console.log(2);
+    scroll(idx === projects.length - 1 ? 0 : idx + 1);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -20,15 +39,19 @@ function Projects({ projects }: Props) {
       className="h-screen relative flex overflow:hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0"
     >
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl invisible md:visible">&nbsp;Projects</h3>
-      <div className="visible md:invisible absolute flex w-full justify-between px-1">
-        <ChevronLeftIcon className="h-8 w-8 text-gray-500" />
-        <ChevronRightIcon className="h-8 w-8 text-gray-500" />
+      <div className="visible absolute flex w-full justify-between px-1 z-50 cursor-pointer">
+        <ChevronLeftIcon className="h-8 w-8 text-gray-500" onClick={handlePreviousClick} />
+        <ChevronRightIcon className="h-8 w-8 text-gray-500" onClick={handleNextClick} />
       </div>
       <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-accent-80">
         {projects.map((project, index) => {
           const { image, title, summary, technologies, linkToBuild } = project;
           return (
-            <div className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-10 md:p-44 h-screen" key={index}>
+            <div
+              className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-10 md:p-44 h-screen"
+              key={index}
+              id={`project_${index}`}
+            >
               <motion.div
                 initial={{
                   y: -200,

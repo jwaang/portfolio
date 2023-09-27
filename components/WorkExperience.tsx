@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import ExperienceCard from "@/components/ExperienceCard";
 import { Experience } from "@/typings";
@@ -12,25 +12,20 @@ type Props = {
 };
 
 function Experience({ experiences }: Props) {
-  // TODO: Scroll is buggy with styling
-  // const [idx, setIdx] = useState(0);
-  // const ref = useRef<HTMLDivElement | null>(null);
-  // const handlePreviousClick = () => {
-  //   if (idx === 0) {
-  //     return;
-  //   }
-  //   const element = ref.current?.children[idx - 1];
-  //   setIdx(idx - 1);
-  //   element?.scrollIntoView({ behavior: "smooth" });
-  // };
-  // const handleNextClick = () => {
-  //   if (idx === experiences.length - 1) {
-  //     return;
-  //   }
-  //   const element = ref.current?.children[idx + 1];
-  //   setIdx(idx + 1);
-  //   element?.scrollIntoView({ behavior: "smooth" });
-  // };
+  const [idx, setIdx] = useState(0);
+
+  const scroll = (idx: number) => {
+    const element = document.getElementById(`experience_card_${idx}`);
+    setIdx(idx);
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handlePreviousClick = () => {
+    scroll(idx === 0 ? experiences.length - 1 : idx - 1);
+  };
+  const handleNextClick = () => {
+    scroll(idx === experiences.length - 1 ? 0 : idx + 1);
+  };
 
   return (
     <motion.div
@@ -41,9 +36,9 @@ function Experience({ experiences }: Props) {
     >
       <h3 className="absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl invisible md:visible">&nbsp;Experience</h3>
 
-      <div className="visible md:invisible absolute flex w-full justify-between px-1">
-        <ChevronLeftIcon className="h-8 w-8 text-gray-500" />
-        <ChevronRightIcon className="h-8 w-8 text-gray-500" />
+      <div className="visible absolute flex w-full justify-between px-1 cursor-pointer">
+        <ChevronLeftIcon className="h-8 w-8 text-gray-500" onClick={handlePreviousClick} />
+        <ChevronRightIcon className="h-8 w-8 text-gray-500" onClick={handleNextClick} />
       </div>
 
       <div className="w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-accent-80">
@@ -58,7 +53,7 @@ function Experience({ experiences }: Props) {
             return 0;
           })
           .map((experience, i) => (
-            <ExperienceCard key={experience._id} experience={experience} />
+            <ExperienceCard key={experience._id} experience={experience} id={`experience_card_${i}`} />
           ))}
       </div>
     </motion.div>
