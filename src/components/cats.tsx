@@ -7,17 +7,17 @@ const reviews = [
     {
         name: "Bari",
         img: "/bari.avif",
-        about: 'Curious. Loves to yell.',
+        about: 'Curious and loud',
     },
     {
         name: "Doja",
         img: "/doja.avif",
-        about: 'Cuddler. Shy and picky.',
+        about: 'Cuddly and picky',
     },
     {
         name: "Perla",
         img: "/perla.avif",
-        about: 'Independent. Spicy attitude.',
+        about: 'Independent and sassy',
     },
 ];
 
@@ -41,14 +41,14 @@ const ReviewCard = ({
             )}
         >
             <div className="flex flex-row items-center justify-center gap-6">
-                <div className="flex items-center justify-center shadow-2xl h-[80px] w-[80px] rounded-full overflow-hidden">
+                <div className="flex items-center justify-center shadow-2xl h-[60px] w-[60px] sm:h-[80px] sm:w-[80px] rounded-full overflow-hidden">
                     <a href={img} target="_blank" rel="noopener noreferrer">
                         <Image
                             src={img}
                             alt={name}
-                            width={80}
-                            height={80}
-                            className="object-cover"
+                            width={60}
+                            height={60}
+                            className="object-cover sm:h-[80px] sm:w-[80px]"
                         />
                     </a>
                 </div>

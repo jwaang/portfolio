@@ -18,6 +18,8 @@ interface ResumeCardProps {
   badges?: readonly string[];
   period: string;
   description?: string;
+  location?: string;
+  minors?: readonly string[];
 }
 export const ResumeCard = ({
   logoUrl,
@@ -28,24 +30,25 @@ export const ResumeCard = ({
   badges,
   period,
   description,
+  location,
+  minors
 }: ResumeCardProps) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (description) {
-      e.preventDefault();
       setIsExpanded(!isExpanded);
     }
   };
 
   return (
-    <Link
-      href={href || "#"}
-      className="block cursor-pointer"
-      onClick={handleClick}
-    >
-      <Card className="flex">
-        <div className="flex-none">
+    <Card className={`flex ${description ? 'cursor-pointer' : ''}`} onClick={handleClick}>
+      <div className="flex-none">
+        <Link
+          href={href || "#"}
+          target="_blank"
+          className="block cursor-pointer"
+        >
           <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
             <AvatarImage
               src={logoUrl}
@@ -54,57 +57,67 @@ export const ResumeCard = ({
             />
             <AvatarFallback>{altText[0]}</AvatarFallback>
           </Avatar>
-        </div>
-        <div className="flex-grow ml-4 items-center flex-col group">
-          <CardHeader>
-            <div className="flex items-center justify-between gap-x-2 text-base">
-              <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
-                {title}
-                {badges && (
-                  <span className="inline-flex gap-x-1">
-                    {badges.map((badge, index) => (
-                      <Badge
-                        variant="secondary"
-                        className="align-middle text-xs"
-                        key={index}
-                      >
-                        {badge}
-                      </Badge>
-                    ))}
-                  </span>
-                )}
+        </Link>
+      </div>
+      <div className="flex-grow ml-4 items-center flex-col group">
+        <CardHeader>
+          <div className="flex items-center justify-between gap-x-2 text-base">
+            <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
+              {title}
+              {badges && (
+                <span className="inline-flex gap-x-1">
+                  {badges.map((badge, index) => (
+                    <Badge
+                      variant="secondary"
+                      className="align-middle text-xs"
+                      key={index}
+                    >
+                      {badge}
+                    </Badge>
+                  ))}
+                </span>
+              )}
+              {description && (
                 <ChevronRightIcon
                   className={cn(
                     "size-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100",
                     isExpanded ? "rotate-90" : "rotate-0"
                   )}
                 />
-              </h3>
-              <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
-                {period}
-              </div>
+              )}
+            </h3>
+            <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
+              {period}
             </div>
+          </div>
+          <div className={`flex justify-between gap-x-2 text-base ${minors ? 'flex-col' : 'items-center'}`}>
             {subtitle && <div className="font-sans text-xs">{subtitle}</div>}
-          </CardHeader>
-          {description && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{
-                opacity: isExpanded ? 1 : 0,
+            {location && (
+              <div className="font-sans text-xs text-muted-foreground italic">{location}</div>
+            )}
+            {minors && (
+              <div className="font-sans text-xs">Minors: {minors.join(', ')}</div>
+            )}
+          </div>
+        </CardHeader>
+        {description && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{
+              opacity: isExpanded ? 1 : 0,
 
-                height: isExpanded ? "auto" : 0,
-              }}
-              transition={{
-                duration: 0.7,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="mt-2 text-xs sm:text-sm"
-            >
-              {description}
-            </motion.div>
-          )}
-        </div>
-      </Card>
-    </Link>
+              height: isExpanded ? "auto" : 0,
+            }}
+            transition={{
+              duration: 0.7,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="mt-2 text-xs sm:text-sm"
+          >
+            {description}
+          </motion.div>
+        )}
+      </div>
+    </Card>
   );
 };

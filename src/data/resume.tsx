@@ -23,7 +23,7 @@ export const DATA = {
     "PostgreSQL",
     "HTML",
     "CSS",
-    "SASS",
+    "Sass",
     "Jest",
     "Figma",
     "TailwindCSS",
@@ -95,15 +95,38 @@ export const DATA = {
       description:
         "At Citi, I developed dashboards that delivered over 50% effort reduction and ~$0.7M in annual savings, while enhancing SDLC adherence. I standardized technical and UI/UX design, development, and deployment practices for Angular applications, driving improved efficiency and reducing risk. By implementing a micro-frontend architecture, I optimized workflows and boosted productivity. I also collaborated with cross-functional teams, provided technical leadership, and conducted code reviews to maintain high development standards across the team.",
     },
+    {
+      company: "Abbott",
+      badges: [],
+      href: "https://www.abbott.com/",
+      location: "Plano, TX",
+      title: "Co-op",
+      logoUrl: "/abbott.webp",
+      start: "Jan 2018",
+      end: "Aug 2018",
+      description: "I worked closely with management to develop a tool that could be used to automate and expedite the population of lengthy Application/Design FMECA risk tables. After carefully gathering user requirements and understanding the process thoroughly, I designed the tool to mimic the manual efforts required to generate risk tables and to help minimize human errors by doing repetitive tasks more quickly and accurately."
+    },
+    {
+      company: "Texas Instruments",
+      badges: [],
+      href: "https://www.ti.com/",
+      location: "Richardson, TX",
+      title: "Intern",
+      logoUrl: "/ti.jpg",
+      start: "May 2017",
+      end: "Aug 2018",
+      description: "I worked alongside experienced employees from the Security Operations Center to learn more about cybersecurity. Using Python, I also created an automated Splunk application that was able to pull data from an incident response platform allowing management to analyze trends and metrics in incident responses and performances of members within Splunk dashboards."
+    },
   ],
   education: [
     {
       school: "Texas A&M University",
       href: "https://www.tamu.edu/",
       degree: "B.S. in Computer Science",
-      logoUrl: "/tamu.png",
+      logoUrl: "/tamu.jpg",
       start: "2014",
       end: "2018",
+      minors: ["Cybersecurity", "Art"]
     },
   ],
   projects: [
