@@ -8,9 +8,11 @@ export const DATA = {
   location: "Austin, TX",
   locationLink: "https://www.google.com/maps/place/austin",
   description:
-    "Frontend engineer. Cat dad.",
+    "Frontend engineer based in Austin, TX",
   summary:
-    "Experienced frontend engineer with 5 years of crafting user-friendly, visually appealing web apps. Skilled in JavaScript, React, and Next.js, and passionate about learning new tech. Outside of work, I love cooking, video editing, diving into single-player games, or unwinding with movies and shows alongside my girlfriend and our three cats.",
+    `Experienced frontend engineer with 5 years of crafting user-friendly, visually appealing web apps. Skilled in JavaScript, React, and Next.js, and passionate about learning new tech.
+
+  Outside of work, I love cooking, video editing, diving into single-player games, getting rug pulled on memecoins, or unwinding with movies and shows alongside my girlfriend and our three cats.`,
   avatarUrl: "/me.jpg",
   skills: [
     "JavaScript",
@@ -117,6 +119,7 @@ export const DATA = {
         "TypeScript",
         "Supabase",
         "TailwindCSS",
+        "Figma",
       ],
       links: [
         {
