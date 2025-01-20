@@ -131,6 +131,39 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "OrbitTrack",
+      href: "https://orbit-track-nine.vercel.app/",
+      dates: "Jan 2025",
+      active: true,
+      description:
+        "Orbit Track is a full-stack app that helps users keep up with trending tokens and manage their favorites easily. The frontend is built with Next.js and TypeScript, combining a clean, responsive design with smooth animations using Tailwind CSS and Framer Motion. On the backend, it uses Fastify and GraphQL for efficient data handling with a PostgreSQL database. Everything is containerized with Docker, making it easy to deploy and scale. It’s a sleek, user-friendly solution for staying on top of cryptocurrency trends.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "GraphQL",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Node.js",
+        "Fastify",
+        "PostgreSQL",
+        "Docker",
+      ],
+      links: [
+        {
+          type: "Demo",
+          href: "https://youtu.be/hkdfiLumP-s?si=0GXyD_Qhz-4V_HTw",
+          icon: <Icons.youtube className="size-3" />,
+        },
+        {
+          type: "Repo",
+          href: "https://github.com/jwaang/orbit-track",
+          icon: <Icons.github className="size-3" />,
+        }
+      ],
+      image: "",
+      video: "/orbit_track_demo.mp4"
+    },
+    {
       title: "Moonshot",
       href: "https://moonshot.tech",
       dates: "Apr 2024 - June 2024",
