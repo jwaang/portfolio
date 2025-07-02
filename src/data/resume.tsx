@@ -72,14 +72,24 @@ export const DATA = {
 
   work: [
     {
+      company: "General Motors",
+      href: "https://www.gm.com/",
+      badges: [],
+      location: "Hybrid - Austin, TX",
+      title: "Senior Frontend Engineer / Tech Lead",
+      logoUrl: "/gm.jpg",
+      start: "Apr 2025",
+      end: "Present",
+    },
+    {
       company: "SchooLinks",
       href: "https://www.schoolinks.com/",
       badges: [],
-      location: "Remote",
+      location: "Remote - Austin, TX",
       title: "Senior Frontend Engineer",
       logoUrl: "/schoolinks.jpeg",
       start: "Nov 2021",
-      end: "Present",
+      end: "Mar 2025",
       description:
         "At SchooLinks, I developed impactful front-end solutions for 200,000+ monthly users, including a Chrome extension that streamlined logins and reduced support time. I led the migration from React 16 to React 18, modernizing the codebase, and reduced technical debt by implementing ESLint plugins for cleaner imports. As the common component lead, I established best practices for design, documentation, and integration. Additionally, I enhanced the front-end interview process, mentored junior developers, and helped foster a culture of high-quality code through improved PR workflows and reviews.",
     },
